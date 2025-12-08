@@ -1,29 +1,20 @@
 import Image from "next/image";
-
-const navSections = [
-  { title: "Accessoires", items: ["Hair", "Bag", "Guêtres"] },
-  { title: "Haut", items: ["Top", "Tee-shirt"] },
-  { title: "Bas", items: ["Pants", "Jean", "Skirt"] },
-  { title: "Streetwear", items: ["Veste", "Sweat"] },
-];
+import { navigationSections, type NavSection } from "@/content/navigation";
 
 function LogoMark() {
   return (
     <Image
-      src="/assets/images/logo.png"
+      src="/assets/images/logo-tiny.png"
       alt="Millie's Magic World logo"
-      width={90}
-      height={66}
-      className="h-12 w-auto drop-shadow-[0_6px_18px_rgba(29,7,39,0.45)]"
+      width={60}
+      height={60}
+      className="h-10 w-10 rounded-full border border-white/30 bg-white/90 object-cover drop-shadow-[0_6px_18px_rgba(29,7,39,0.45)]"
       priority
     />
   );
 }
 
-function NavSection({
-  title,
-  items,
-}: (typeof navSections)[number]) {
+function NavSection({ title, items }: NavSection) {
   return (
     <div className="group relative text-xs font-semibold uppercase tracking-[0.35em] text-white">
       <button
@@ -57,7 +48,7 @@ export default function NavBar() {
         <div className="flex items-center justify-between gap-4">
           <LogoMark />
           <nav className="flex flex-wrap items-center gap-5 text-white/90 lg:hidden">
-            {navSections.map((section) => (
+            {navigationSections.map((section) => (
               <NavSection key={section.title} {...section} />
             ))}
           </nav>
@@ -80,7 +71,7 @@ export default function NavBar() {
         </div>
         <div className="hidden flex-1 items-center justify-between gap-6 lg:flex">
           <nav className="flex flex-wrap items-center gap-5 text-white/90">
-            {navSections.map((section) => (
+            {navigationSections.map((section) => (
               <NavSection key={section.title} {...section} />
             ))}
           </nav>

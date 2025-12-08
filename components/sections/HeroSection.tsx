@@ -1,4 +1,4 @@
-export default function VideoHero() {
+export default function HeroSection() {
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-black text-white">
       <video
