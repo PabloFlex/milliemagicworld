@@ -1,3 +1,5 @@
+import ProductCards from "@/components/sections/ProductCards";
+
 export default function HeroSection() {
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-black text-white">
@@ -23,6 +25,9 @@ export default function HeroSection() {
           Dans cette forêt d&rsquo;aurores, Millie brode des silhouettes libres où se mêlent soies iridescentes
           et armures street. Suis l&rsquo;orbe, respire, et compose ton sortilège vestimentaire.
         </p>
+        <div className="mt-6">
+          <ProductCards />
+        </div>
         <div className="mt-6 flex flex-wrap gap-4 text-xs uppercase">
           <button className="rounded-full bg-white/90 px-6 py-3 tracking-[0.3em] text-[#2c1535]">
             Découvrir
