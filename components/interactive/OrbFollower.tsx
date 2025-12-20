@@ -32,7 +32,7 @@ export default function OrbFollower() {
   const isActiveRef = useRef(false);
   const lightSurfaceRef = useRef(false);
   const idleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") {
