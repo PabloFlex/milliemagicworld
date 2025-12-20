@@ -6,6 +6,7 @@ import OrbFollower from "@/components/interactive/OrbFollower";
 import NavBar from "@/components/layout/NavBar";
 import HeroSection from "@/components/sections/HeroSection";
 import OriginsSection from "@/components/sections/OriginsSection";
+import ProductShowcaseSection from "@/components/sections/ProductShowcaseSection";
 
 export default function HomeContent() {
   const [newsletterOpen, setNewsletterOpen] = useState(true);
@@ -17,7 +18,7 @@ export default function HomeContent() {
       <NavBar />
       <HeroSection />
       <OriginsSection />
+      <ProductShowcaseSection />
     </div>
   );
 }
-

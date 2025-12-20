@@ -1,0 +1,23 @@
+<svg width="360" height="420" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="420" rx="46" fill="url(#halo_bg)" />
+  <g filter="url(#halo_glow)">
+    <path d="M180 70C205 68 228 92 240 132L270 236L308 308C318 327 306 350 285 350H75C54 350 42 327 52 308L90 236L120 132C132 92 155 68 180 70Z" fill="url(#halo_coat)" stroke="rgba(255,255,255,0.55)" stroke-width="5" />
+    <path d="M180 122L195 210C198 228 186 244 168 244C150 244 138 228 141 210L156 122" stroke="rgba(255,255,255,0.6)" stroke-width="7" stroke-linecap="round" />
+    <path d="M120 192L96 264" stroke="rgba(255,255,255,0.4)" stroke-width="6" stroke-linecap="round" />
+    <path d="M240 192L264 264" stroke="rgba(255,255,255,0.4)" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <defs>
+    <linearGradient id="halo_bg" x1="0" y1="0" x2="360" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#130918" />
+      <stop offset="1" stop-color="#43194c" />
+    </linearGradient>
+    <linearGradient id="halo_coat" x1="100" y1="80" x2="280" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f2d6ff" />
+      <stop offset="0.5" stop-color="#cbb9ff" />
+      <stop offset="1" stop-color="#61d8d0" />
+    </linearGradient>
+    <filter id="halo_glow" x="0" y="10" width="360" height="400" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="6" />
+    </filter>
+  </defs>
+</svg>

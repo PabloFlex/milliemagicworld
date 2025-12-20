@@ -1,0 +1,23 @@
+<svg width="360" height="420" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="420" rx="46" fill="url(#bag_bg)" />
+  <g filter="url(#bag_glow)">
+    <path d="M94 184C94 165 109 150 128 150H232C251 150 266 165 266 184V286C266 305 251 320 232 320H128C109 320 94 305 94 286V184Z" fill="url(#bag_body)" stroke="rgba(255,255,255,0.5)" stroke-width="5" />
+    <path d="M140 150C140 120 157 96 180 96C203 96 220 120 220 150" stroke="#fee0ff" stroke-width="10" stroke-linecap="round" />
+    <circle cx="180" cy="232" r="32" stroke="#ffe0f7" stroke-width="8" fill="none" />
+    <path d="M120 236H148" stroke="#fee0ff" stroke-width="6" stroke-linecap="round" />
+    <path d="M212 236H240" stroke="#fee0ff" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <defs>
+    <linearGradient id="bag_bg" x1="0" y1="0" x2="360" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1a0425" />
+      <stop offset="1" stop-color="#401737" />
+    </linearGradient>
+    <linearGradient id="bag_body" x1="90" y1="150" x2="274" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f686c7" />
+      <stop offset="1" stop-color="#ffd5ff" />
+    </linearGradient>
+    <filter id="bag_glow" x="60" y="70" width="240" height="280" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3.5" />
+    </filter>
+  </defs>
+</svg>
