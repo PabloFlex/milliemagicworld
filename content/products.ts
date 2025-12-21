@@ -30,10 +30,10 @@ export const featuredProducts: FeaturedProduct[] = [
     shipping: "Prêt sous 72h",
     badge: "Edition limitée",
     sizes: ["XS", "S", "M", "L", "XL"],
-    highlights: ["Androgyne fit", "Doublure upcyclée"],
+    highlights: ["Coupe androgyne", "Doublure satinée"],
     preview: {
-      src: "/assets/images/products/halo-coat.svg",
-      alt: "Parka longue iridescente Halo Coat",
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
       glow: "rgba(255, 210, 255, 0.45)",
     },
     aura: {
@@ -53,8 +53,8 @@ export const featuredProducts: FeaturedProduct[] = [
     sizes: ["XS", "S", "M", "L"],
     highlights: ["Unisexe", "Tissu certifié Oeko-Tex"],
     preview: {
-      src: "/assets/images/products/prism-set.svg",
-      alt: "Ensemble iridescent Prism Set",
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
       glow: "rgba(111, 220, 255, 0.35)",
     },
     aura: {
@@ -73,14 +73,35 @@ export const featuredProducts: FeaturedProduct[] = [
     sizes: ["TU"],
     highlights: ["Bandoulière modulable", "Made in France"],
     preview: {
-      src: "/assets/images/products/astral-bag.svg",
-      alt: "Sac nacré Astral Bag",
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
       glow: "rgba(255, 179, 228, 0.45)",
     },
     aura: {
       from: "#401b45",
       via: "#8a2f70",
       to: "#fdb2ff",
+    },
+  },
+  {
+    id: "nebula-boots",
+    title: "Nebula Boots",
+    category: "Studio Lune",
+    description: "Bottes plateformées reflet miroir, boucle astrale et zip invisible.",
+    price: "210 €",
+    shipping: "Made to order / 7 jours",
+    badge: "Nouveau",
+    sizes: ["36", "37", "38", "39", "40", "41", "42"],
+    highlights: ["Semelle amortie", "Cuir vegan premium"],
+    preview: {
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
+      glow: "rgba(179, 210, 255, 0.4)",
+    },
+    aura: {
+      from: "#2f2c74",
+      via: "#5691ff",
+      to: "#b1e1ff",
     },
   },
 ];

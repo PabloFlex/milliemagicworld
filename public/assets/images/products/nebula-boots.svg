@@ -1,0 +1,24 @@
+<svg width="360" height="420" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="420" rx="40" fill="url(#boots_bg)" />
+  <g filter="url(#boots_glow)">
+    <path d="M124 120L146 322C148 340 164 354 182 354H212C228 354 242 341 244 324L256 188C258 174 248 162 234 162H166C152 162 140 150 140 136V122C140 122 124 120 124 120Z" fill="url(#boots_body)" stroke="rgba(255,255,255,0.5)" stroke-width="6" stroke-linejoin="round" />
+    <path d="M140 192H252" stroke="rgba(255,255,255,0.6)" stroke-width="6" stroke-linecap="round" />
+    <path d="M154 246H246" stroke="rgba(255,255,255,0.35)" stroke-width="6" stroke-linecap="round" />
+    <path d="M180 280C180 260 196 244 216 244C236 244 252 260 252 280" stroke="#d9f0ff" stroke-width="8" />
+    <circle cx="220" cy="206" r="12" fill="#fef6ff" />
+  </g>
+  <defs>
+    <linearGradient id="boots_bg" x1="0" y1="0" x2="360" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101732" />
+      <stop offset="1" stop-color="#16243e" />
+    </linearGradient>
+    <linearGradient id="boots_body" x1="124" y1="120" x2="272" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b3c8ff" />
+      <stop offset="0.5" stop-color="#8ec5ff" />
+      <stop offset="1" stop-color="#f3f2ff" />
+    </linearGradient>
+    <filter id="boots_glow" x="80" y="80" width="220" height="310" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+  </defs>
+</svg>

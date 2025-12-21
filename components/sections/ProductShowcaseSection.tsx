@@ -1,45 +1,28 @@
 import ProductCards from "@/components/sections/ProductCards";
 
-const floatingOrbs = [
-  { size: 220, top: "14%", left: "8%", color: "rgba(161, 119, 255, 0.35)" },
-  { size: 160, top: "60%", left: "15%", color: "rgba(111, 216, 222, 0.25)" },
-  { size: 190, top: "32%", right: "12%", color: "rgba(255, 166, 213, 0.3)" },
-  { size: 140, bottom: "12%", right: "22%", color: "rgba(252, 255, 198, 0.3)" },
-];
-
 export default function ProductShowcaseSection() {
   return (
-    <section className="relative overflow-hidden bg-[#040006] py-20 text-white sm:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(151,119,255,0.18),transparent_55%),radial-gradient(circle_at_bottom,_rgba(65,152,183,0.22),transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0">
-        {floatingOrbs.map((orb) => (
-          <span
-            key={`${orb.top ?? orb.bottom}-${orb.left ?? orb.right}-${orb.size}`}
-            style={{
-              width: orb.size,
-              height: orb.size,
-              top: orb.top,
-              bottom: orb.bottom,
-              left: orb.left,
-              right: orb.right,
-              backgroundColor: orb.color,
-            }}
-            className="absolute rounded-full blur-[110px]"
-          />
-        ))}
-      </div>
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6">
-        <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.55em] text-white/70">
-            Drop en clair
-          </p>
-          <h2 className="mt-4 text-3xl font-light leading-tight text-white sm:text-4xl">
-            Les artefacts portables prêts à invoquer
-          </h2>
-          <p className="mt-4 text-base text-white/75 sm:text-lg">
-            Chaque carte est reliée au headless CMS : prix, tailles et prévisualisation se
-            mettent à jour dès que Millie craft une nouvelle pièce.
-          </p>
+    <section className="bg-[#f6f4fb] py-20 text-[#1f1432] sm:py-28">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6">
+        <div className="flex flex-col gap-6 text-left sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.45em] text-[#9a8dbb]">
+              Sélection atelier
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#1b0f2a] sm:text-4xl">
+              Un aperçu des pièces disponibles maintenant
+            </h2>
+            <p className="mt-4 text-base text-[#524061] sm:text-lg">
+              Cartes synchronisées avec le CMS headless : visuels, focus matières et grilles
+              de tailles se mettent à jour dès qu&rsquo;un drop change.
+            </p>
+          </div>
+          <div className="text-sm text-[#6b5a7c]">
+            <p className="uppercase tracking-[0.35em]">Disponibilité</p>
+            <p className="mt-2 text-base font-semibold text-[#26143a]">
+              Stocks mis à jour en continu depuis le studio
+            </p>
+          </div>
         </div>
         <ProductCards />
       </div>

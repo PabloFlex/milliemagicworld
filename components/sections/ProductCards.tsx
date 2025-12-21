@@ -1,102 +1,123 @@
+"use client";
+
 import Image from "next/image";
+import { useState, type ReactNode } from "react";
 
 import {
   featuredProducts,
   type FeaturedProduct,
 } from "@/content/products";
 
+function MetaTag({ children }: { children: ReactNode }) {
+  return (
+    <span className="rounded-full bg-gradient-to-r from-[#311038] via-[#2c1535] to-[#1b0f26] px-3 py-1 text-[10px] uppercase tracking-[0.35em] text-white shadow-lg shadow-[#18051f]/30">
+      {children}
+    </span>
+  );
+}
+
+function DetailTag({ children, color }: { children: ReactNode; color: string }) {
+  return (
+    <span className="flex items-center gap-2 rounded-full border border-slate-100 bg-white px-3 py-2 text-xs font-medium text-slate-600">
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ backgroundColor: color }}
+      />
+      {children}
+    </span>
+  );
+}
+
 function ProductCard({
   title,
   category,
   description,
   price,
-  shipping,
   badge,
   highlights,
   sizes,
   preview,
   aura,
 }: FeaturedProduct) {
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const gradientStops = aura.via
     ? `${aura.from}, ${aura.via}, ${aura.to}`
     : `${aura.from}, ${aura.to}`;
+  const metaTags = [category, badge].filter(Boolean) as string[];
 
   return (
-    <article className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-[42px] border border-white/10 bg-white/[0.03] p-6 text-white shadow-[0_35px_90px_rgba(1,0,18,0.6)] transition duration-300 hover:-translate-y-1.5">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-60 blur-3xl transition duration-500 group-hover:opacity-100"
-        style={{
-          background: `linear-gradient(150deg, ${gradientStops})`,
-        }}
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/10" />
-      <div className="relative z-10 flex flex-1 flex-col gap-6">
-        <div className="flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.4em] text-white/80">
-          <span>{category}</span>
-          {badge ? (
-            <span className="rounded-full border border-white/30 px-3 py-1 text-[10px]">
-              {badge}
-            </span>
-          ) : null}
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white text-slate-900 shadow-[0_25px_70px_rgba(15,15,40,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,15,40,0.12)]">
+      <div className="relative aspect-[7/5] w-full overflow-hidden">
+        <Image
+          src={preview.src}
+          alt={preview.alt}
+          fill
+          sizes="(max-width: 1536px) 33vw, 480px"
+          className="object-cover transition duration-500 group-hover:scale-105"
+          priority={false}
+        />
+        <div
+          className="absolute inset-0 opacity-70"
+          style={{
+            background: `linear-gradient(135deg, ${gradientStops})`,
+            mixBlendMode: "multiply",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/35" />
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          {metaTags.map((tag) => (
+            <MetaTag key={`${title}-${tag}`}>{tag}</MetaTag>
+          ))}
         </div>
-        <div className="flex flex-col gap-6 lg:flex-row">
-          <div className="flex flex-1 flex-col gap-4">
-            <div>
-              <h3 className="text-2xl font-light leading-tight text-white drop-shadow-md">
-                {title}
-              </h3>
-              <p className="mt-2 text-sm text-white/85">{description}</p>
-            </div>
-            <ul className="grid gap-2 text-[11px] uppercase tracking-[0.35em] text-white/85">
-              {highlights.map((highlight) => (
-                <li
-                  key={`${title}-${highlight}`}
-                  className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2"
+        <div className="relative z-10 flex h-full items-center justify-center" />
+      </div>
+      <div className="flex flex-1 flex-col gap-4 px-6 py-6">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.4em] text-slate-400">
+            Capsule
+          </p>
+          <h3 className="mt-2 text-xl font-semibold text-slate-900">{title}</h3>
+          <p className="mt-1 text-sm text-slate-500">{description}</p>
+        </div>
+        <div className="border-t border-slate-100 pt-4">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-slate-400">
+            Focus
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {highlights.map((highlight) => (
+              <DetailTag key={`${title}-${highlight}`} color={aura.to}>
+                {highlight}
+              </DetailTag>
+            ))}
+          </div>
+        </div>
+        <div className="border-t border-slate-100 pt-4">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-slate-400">
+            Tailles
+          </p>
+          <div className="mt-3 grid grid-cols-6 justify-items-center gap-2 text-xs text-slate-700">
+            {sizes.map((size) => {
+              const isSelected = selectedSize === size;
+              return (
+                <button
+                  key={`${title}-${size}`}
+                  type="button"
+                  onClick={() => setSelectedSize(size)}
+                  className={`rounded-lg border px-3 py-2 text-center font-semibold tracking-[0.25em] transition ${
+                    isSelected
+                      ? "border-slate-900 bg-slate-900 text-white"
+                      : "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+                  }`}
+                  aria-pressed={isSelected}
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.45em] text-white/65">
-                Tailles
-              </p>
-              <div className="mt-2 flex flex-wrap gap-2 text-xs">
-                {sizes.map((size) => (
-                  <span
-                    key={`${title}-${size}`}
-                    className="rounded-full border border-white/20 px-3 py-1 tracking-[0.35em] text-white/90"
-                  >
-                    {size}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="relative flex flex-1 items-center justify-center">
-            <div
-              className="absolute inset-0 m-6 rounded-[32px] opacity-80 blur-3xl"
-              style={{ backgroundColor: preview.glow }}
-            />
-            <div className="relative h-64 w-full max-w-[260px] overflow-hidden rounded-[32px] border border-white/10 bg-white/10 shadow-[0_30px_80px_rgba(9,0,25,0.5)]">
-              <Image
-                src={preview.src}
-                alt={preview.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 260px"
-                className="object-contain"
-                priority={false}
-              />
-            </div>
+                  {size}
+                </button>
+              );
+            })}
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs uppercase tracking-[0.4em] text-white/70">
-          <div>
-            <p>Tribute</p>
-            <p className="text-2xl font-semibold tracking-normal text-white">{price}</p>
-          </div>
-          <p>{shipping}</p>
+        <div className="mt-auto text-right text-2xl font-semibold tracking-tight text-slate-900">
+          {price}
         </div>
       </div>
     </article>
@@ -105,7 +126,7 @@ function ProductCard({
 
 export default function ProductCards() {
   return (
-    <div className="grid w-full gap-6 text-white md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid w-full gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
       {featuredProducts.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
