@@ -20,7 +20,6 @@ export default function NewsletterPopup({ onOpenChange }: NewsletterPopupProps) 
     }
 
     let index = 0;
-    setTypedMessage("");
 
     const interval = window.setInterval(() => {
       index += 1;

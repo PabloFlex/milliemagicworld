@@ -2,7 +2,10 @@ import ProductCards from "@/components/sections/ProductCards";
 
 export default function ProductShowcaseSection() {
   return (
-    <section className="bg-[#f6f4fb] py-20 text-[#1f1432] sm:py-28">
+    <section
+      id="selection-atelier"
+      className="bg-[#f6f4fb] py-20 text-[#1f1432] sm:py-28"
+    >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6">
         <div className="flex flex-col gap-6 text-left sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">

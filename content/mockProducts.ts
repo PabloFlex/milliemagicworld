@@ -1,0 +1,107 @@
+import type { FeaturedProduct } from "./productTypes";
+
+export const mockFeaturedProducts: FeaturedProduct[] = [
+  {
+    id: "halo-coat",
+    title: "Halo Coat ∞",
+    category: "Drop Eclipse",
+    description: "Parka modulable satinée, capuche cathedral et surpiqûres phospho.",
+    price: "220 €",
+    shipping: "Prêt sous 72h",
+    badge: "Edition limitée",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    highlights: ["Coupe androgyne", "Doublure satinée"],
+    story: [
+      "Imaginé pour les nuits d'éclipse, le Halo Coat ∞ reprend la coupe protectrice des manteaux de motards que Millie collectionne depuis l'adolescence.",
+      "Chaque pièce est taillée dans un satin technique plongé dans un bain de teinture violet profond, puis rebrodée à la main avec un fil photoluminescent pour tracer les halos sur les épaules.",
+      "Le dos conserve une ouverture secrète pour glisser la capuche cathédrale, clin d'œil aux silhouettes futuristes des rave parties de la côte basque.",
+    ],
+    preview: {
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
+      glow: "rgba(255, 210, 255, 0.45)",
+    },
+    aura: {
+      from: "#43306f",
+      via: "#6d48c9",
+      to: "#ff8ac3",
+    },
+  },
+  {
+    id: "prism-set",
+    title: "Prism Set",
+    category: "Capsule Ritual",
+    description: "Twin set crop + pantalon flare avec reflets iridescents qui suivent la lumière.",
+    price: "185 €",
+    shipping: "Précommande 10 jours",
+    badge: "Best-seller",
+    sizes: ["XS", "S", "M", "L"],
+    highlights: ["Unisexe", "Tissu certifié Oeko-Tex"],
+    story: [
+      "Le Prism Set est né d'une collaboration avec le studio lumière du festival Peacock. Les danseur·se·s voulaient une tenue qui capture chaque laser sans jamais s'alourdir.",
+      "Millie a mis au point un jacquard poli sur l'endroit et brossé sur l'envers, offrant un confort de seconde peau tandis que la surface iridescente renvoie des reflets différents à chaque mouvement.",
+      "Les coutures sont roulottées pour permettre de porter le haut seul et d'enfiler le pantalon même pieds nus en backstage.",
+    ],
+    preview: {
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
+      glow: "rgba(111, 220, 255, 0.35)",
+    },
+    aura: {
+      from: "#162237",
+      via: "#2b7f9f",
+      to: "#9fe7ff",
+    },
+  },
+  {
+    id: "astral-bag",
+    title: "Astral Bag",
+    category: "Atelier Secret",
+    description: "Mini bag orbital, cuir végétal embossé et poignée nacrée qui flirte avec la lune.",
+    price: "140 €",
+    shipping: "Pièce unique / 1 semaine",
+    sizes: ["TU"],
+    highlights: ["Bandoulière modulable", "Made in France"],
+    story: [
+      "L'Astral Bag reprend la forme d'un carnet lunaire trouvé au marché Biron. Millie en a conservé les proportions mini pour garder uniquement les essentiels du rituel.",
+      "Le cuir végétal est embossé à chaud dans l'atelier parisien avec un motif d'orbite dessiné par la grande sœur de Millie.",
+      "La poignée nacrée provient d'anciens bracelets récupérés lors d'une collecte solidaire, puis polis et sertis un par un.",
+    ],
+    preview: {
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
+      glow: "rgba(255, 179, 228, 0.45)",
+    },
+    aura: {
+      from: "#401b45",
+      via: "#8a2f70",
+      to: "#fdb2ff",
+    },
+  },
+  {
+    id: "nebula-boots",
+    title: "Nebula Boots",
+    category: "Studio Lune",
+    description: "Bottes plateformées reflet miroir, boucle astrale et zip invisible.",
+    price: "210 €",
+    shipping: "Made to order / 7 jours",
+    badge: "Nouveau",
+    sizes: ["36", "37", "38", "39", "40", "41", "42"],
+    highlights: ["Semelle amortie", "Cuir vegan premium"],
+    story: [
+      "Les Nebula Boots sont pensées comme des marcheuses interstellaires : Millie a travaillé un cuir vegan réfléchissant qui capture les néons de scène sans chauffer le pied.",
+      "Chaque paire est montée sur une plate-forme creuse remplie d'un gel amortissant recyclé des studios de danse.",
+      "La boucle astrale provient d'une impression 3D en aluminium brossé puis chromé pour résister aux runs nocturnes.",
+    ],
+    preview: {
+      src: "/assets/images/millie.png",
+      alt: "Présentation Millie's Magic World",
+      glow: "rgba(179, 210, 255, 0.4)",
+    },
+    aura: {
+      from: "#2f2c74",
+      via: "#5691ff",
+      to: "#b1e1ff",
+    },
+  },
+];

@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type ReactNode } from "react";
+import Link from "next/link";
+import { type ReactNode } from "react";
 
 import {
   featuredProducts,
   type FeaturedProduct,
 } from "@/content/products";
+import SizeSelector from "@/components/interactive/SizeSelector";
 
 function MetaTag({ children }: { children: ReactNode }) {
   return (
@@ -29,6 +31,7 @@ function DetailTag({ children, color }: { children: ReactNode; color: string }) 
 }
 
 function ProductCard({
+  id,
   title,
   category,
   description,
@@ -39,14 +42,18 @@ function ProductCard({
   preview,
   aura,
 }: FeaturedProduct) {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const gradientStops = aura.via
     ? `${aura.from}, ${aura.via}, ${aura.to}`
     : `${aura.from}, ${aura.to}`;
   const metaTags = [category, badge].filter(Boolean) as string[];
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white text-slate-900 shadow-[0_25px_70px_rgba(15,15,40,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,15,40,0.12)]">
+    <Link
+      href={`/products/${id}`}
+      className="group block no-underline"
+      aria-label={`Voir ${title}`}
+    >
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white text-slate-900 shadow-[0_25px_70px_rgba(15,15,40,0.08)] transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_35px_90px_rgba(15,15,40,0.12)]">
       <div className="relative aspect-[7/5] w-full overflow-hidden">
         <Image
           src={preview.src}
@@ -95,32 +102,23 @@ function ProductCard({
           <p className="text-[11px] uppercase tracking-[0.35em] text-slate-400">
             Tailles
           </p>
-          <div className="mt-3 grid grid-cols-6 justify-items-center gap-2 text-xs text-slate-700">
-            {sizes.map((size) => {
-              const isSelected = selectedSize === size;
-              return (
-                <button
-                  key={`${title}-${size}`}
-                  type="button"
-                  onClick={() => setSelectedSize(size)}
-                  className={`rounded-lg border px-3 py-2 text-center font-semibold tracking-[0.25em] transition ${
-                    isSelected
-                      ? "border-slate-900 bg-slate-900 text-white"
-                      : "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
-                  }`}
-                  aria-pressed={isSelected}
-                >
-                  {size}
-                </button>
-              );
-            })}
-          </div>
+          <SizeSelector
+            sizes={sizes}
+            className="mt-3"
+            suppressNavigation
+          />
         </div>
-        <div className="mt-auto text-right text-2xl font-semibold tracking-tight text-slate-900">
-          {price}
+        <div className="mt-auto flex items-center justify-between">
+          <div className="text-2xl font-semibold tracking-tight text-slate-900">
+            {price}
+          </div>
+            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
+              Voir l&rsquo;histoire →
+            </span>
         </div>
       </div>
-    </article>
+      </article>
+    </Link>
   );
 }
 

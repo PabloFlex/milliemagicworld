@@ -1,5 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
+
 import { navigationSections, type NavSection } from "@/content/navigation";
+import { featuredProducts } from "@/content/products";
+
+const spotlightProduct = featuredProducts[0];
 
 function LogoMark() {
   return (
@@ -53,6 +58,14 @@ export default function NavBar() {
             ))}
           </nav>
           <div className="flex items-center gap-3 lg:hidden">
+            {spotlightProduct && (
+              <Link
+                href={`/products/${spotlightProduct.id}`}
+                className="rounded-full border border-white/40 px-3 py-2 text-[0.6rem] font-semibold tracking-[0.4em] text-white transition hover:bg-white/10"
+              >
+                Pièce
+              </Link>
+            )}
             <button
               type="button"
               className="rounded-full border border-white/40 px-3 py-2 transition hover:border-white hover:bg-white/10"
@@ -76,6 +89,14 @@ export default function NavBar() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
+            {spotlightProduct && (
+              <Link
+                href={`/products/${spotlightProduct.id}`}
+                className="rounded-full border border-white/40 px-4 py-2 text-[0.6rem] font-semibold tracking-[0.4em] text-white transition hover:border-white hover:bg-white/10"
+              >
+                Focus pièce
+              </Link>
+            )}
             <button
               type="button"
               className="rounded-full border border-white/40 px-3 py-2 transition hover:border-white hover:bg-white/10"

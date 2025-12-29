@@ -1,3 +1,9 @@
+import Link from "next/link";
+
+import { featuredProducts } from "@/content/products";
+
+const spotlightProduct = featuredProducts[0];
+
 export default function HeroSection() {
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-black text-white">
@@ -24,12 +30,20 @@ export default function HeroSection() {
           et armures street. Suis l&rsquo;orbe, respire, et compose ton sortilège vestimentaire.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 text-xs uppercase">
-          <button className="rounded-full bg-white/90 px-6 py-3 tracking-[0.3em] text-[#2c1535]">
-            Découvrir
-          </button>
-          <button className="rounded-full border border-white/70 px-6 py-3 tracking-[0.3em] text-white">
+          {spotlightProduct && (
+            <Link
+              href={`/products/${spotlightProduct.id}`}
+              className="rounded-full bg-white/90 px-6 py-3 tracking-[0.3em] text-[#2c1535] transition hover:bg-white"
+            >
+              Focus pièce
+            </Link>
+          )}
+          <Link
+            href="#selection-atelier"
+            className="rounded-full border border-white/70 px-6 py-3 tracking-[0.3em] text-white transition hover:bg-white/10"
+          >
             Looks
-          </button>
+          </Link>
         </div>
       </div>
     </section>
