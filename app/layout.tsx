@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import DropCountdownGate from "@/components/interactive/DropCountdownGate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${cinzelDecorative.variable} antialiased`}
       >
-        {children}
+        <DropCountdownGate>{children}</DropCountdownGate>
       </body>
     </html>
   );

@@ -19,7 +19,11 @@ const trailLength = 12;
 const initialOrbitAngle = Math.random() * Math.PI * 2;
 const LIGHT_THRESHOLD = 185;
 
-export default function OrbFollower() {
+type OrbFollowerProps = {
+  wrapperClassName?: string;
+};
+
+export default function OrbFollower({ wrapperClassName }: OrbFollowerProps = {}) {
   const [position, setPosition] = useState<Point>({ x: 0, y: 0 });
   const [trail, setTrail] = useState<Point[]>([]);
   const [isActive, setIsActive] = useState(false);
@@ -186,7 +190,7 @@ export default function OrbFollower() {
   }`;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50">
+    <div className={wrapperClassName ?? "pointer-events-none fixed inset-0 z-50"}>
       <div className={trailClassName}>
         {trail.map((point, index) => (
           <span
