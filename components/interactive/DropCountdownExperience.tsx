@@ -5,13 +5,25 @@ import { useEffect, useMemo, useState } from "react";
 import OrbFollower from "@/components/interactive/OrbFollower";
 import { DROP_DATE, DROP_LABEL } from "@/lib/drop-config";
 
-const fairyLights = [
+type FairyLight = {
+  id: string;
+  size: number;
+  color: string;
+  blur: number;
+  delay: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+};
+
+const fairyLights: FairyLight[] = [
   { id: "aura-north", top: "6%", left: "10%", size: 220, color: "rgba(255,238,255,0.28)", blur: 90, delay: "0s" },
   { id: "aura-east", top: "24%", right: "8%", size: 180, color: "rgba(173,214,255,0.35)", blur: 80, delay: "0.4s" },
   { id: "aura-southwest", top: "58%", left: "15%", size: 260, color: "rgba(255,204,238,0.35)", blur: 120, delay: "0.8s" },
   { id: "aura-southeast", bottom: "12%", right: "18%", size: 210, color: "rgba(188,255,235,0.32)", blur: 110, delay: "1.2s" },
   { id: "aura-center", bottom: "6%", left: "50%", size: 160, color: "rgba(255,250,227,0.3)", blur: 70, delay: "1.6s" },
-] as const;
+];
 
 export type CountdownSnapshot = {
   days: string;
