@@ -26,3 +26,21 @@ export const DROP_LABEL = new Intl.DateTimeFormat("fr-FR", {
 }).format(DROP_DATE);
 
 export const hasDropOpened = () => Date.now() >= DROP_DATE.getTime();
+
+const DROP_SKIP_STORAGE_KEY = "millie-drop-skip";
+
+export const hasSkippedDrop = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.localStorage.getItem(DROP_SKIP_STORAGE_KEY) === "1";
+};
+
+export const skipDrop = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.localStorage.setItem(DROP_SKIP_STORAGE_KEY, "1");
+};

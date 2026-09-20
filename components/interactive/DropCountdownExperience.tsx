@@ -65,11 +65,13 @@ const computeSnapshot = (): CountdownSnapshot => {
 type DropCountdownExperienceProps = {
   variant?: "overlay" | "page";
   onCountdownEnd?: () => void;
+  onSkip?: () => void;
 };
 
 export default function DropCountdownExperience({
   variant = "overlay",
   onCountdownEnd,
+  onSkip,
 }: DropCountdownExperienceProps) {
   const [snapshot, setSnapshot] = useState<CountdownSnapshot>(() => computeSnapshot());
   const dropLegend = DROP_LABEL.toUpperCase();
@@ -217,6 +219,16 @@ export default function DropCountdownExperience({
                 </span>
               </div>
             </div>
+
+            {onSkip && (
+              <button
+                type="button"
+                onClick={onSkip}
+                className="text-[0.6rem] uppercase tracking-[0.5em] text-white/40 underline-offset-4 transition hover:text-white/80 hover:underline"
+              >
+                Voir le site (démo)
+              </button>
+            )}
           </div>
         </div>
         </div>
