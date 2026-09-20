@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import DropCountdownExperience from "@/components/interactive/DropCountdownExperience";
-import { hasDropOpened, hasSkippedDrop, skipDrop } from "@/lib/drop-config";
+import { hasDropOpened } from "@/lib/drop-config";
 
 type DropCountdownGateProps = {
   children: ReactNode;
@@ -15,14 +15,8 @@ export default function DropCountdownGate({ children }: DropCountdownGateProps) 
   const pathname = usePathname();
   // Passe ce useState à false quand tu veux désactiver temporairement le portail.
   const [isGateEnabled] = useState(true);
+  // Non persisté : un refresh retombe toujours sur le compte à rebours.
   const [isUnlocked, setIsUnlocked] = useState(() => hasDropOpened());
-
-  // Lit le localStorage uniquement côté client pour éviter un mismatch d'hydratation.
-  useEffect(() => {
-    if (hasSkippedDrop()) {
-      setIsUnlocked(true);
-    }
-  }, []);
 
   // Permet d'ouvrir automatiquement le site une fois le drop lancé.
   useEffect(() => {
@@ -66,10 +60,7 @@ export default function DropCountdownGate({ children }: DropCountdownGateProps) 
       <DropCountdownExperience
         variant="overlay"
         onCountdownEnd={() => setIsUnlocked(true)}
-        onSkip={() => {
-          skipDrop();
-          setIsUnlocked(true);
-        }}
+        onSkip={() => setIsUnlocked(true)}
       />
       <div aria-hidden className="pointer-events-none opacity-0">
         {children}

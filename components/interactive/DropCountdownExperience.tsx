@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import OrbFollower from "@/components/interactive/OrbFollower";
-import { DROP_DATE, DROP_LABEL, resetDropSkip } from "@/lib/drop-config";
+import { DROP_DATE, DROP_LABEL } from "@/lib/drop-config";
 
 type FairyLight = {
   id: string;
@@ -76,14 +76,6 @@ export default function DropCountdownExperience({
   const [snapshot, setSnapshot] = useState<CountdownSnapshot>(() => computeSnapshot());
   const dropLegend = DROP_LABEL.toUpperCase();
   const showOrbFollower = variant === "overlay";
-
-  // La page /drop sert de bouton "réinitialiser la démo" : y passer efface le skip
-  // pour que le portail réapparaisse sur l'accueil.
-  useEffect(() => {
-    if (variant === "page") {
-      resetDropSkip();
-    }
-  }, [variant]);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
