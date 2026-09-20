@@ -44,3 +44,11 @@ export const skipDrop = () => {
 
   window.localStorage.setItem(DROP_SKIP_STORAGE_KEY, "1");
 };
+
+export const resetDropSkip = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.localStorage.removeItem(DROP_SKIP_STORAGE_KEY);
+};
