@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "shopify:setup": "node --env-file-if-exists=.env.local scripts/shopify-setup.mjs"
   },
   "dependencies": {
     "next": "^16.0.7",

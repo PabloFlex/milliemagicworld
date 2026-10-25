@@ -5,11 +5,14 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import OrbFollower from "@/components/interactive/OrbFollower";
-import SizeSelector from "@/components/interactive/SizeSelector";
-import CTAButton from "@/components/ui/CTAButton";
 import {
-  featuredProducts,
+  ProductPurchaseProvider,
+  PurchaseButton,
+  PurchaseSizes,
+} from "@/components/cart/ProductPurchase";
+import {
   getFeaturedProductById,
+  getFeaturedProducts,
 } from "@/content/products";
 
 type ProductPageParams = {
@@ -20,8 +23,12 @@ type ProductPageProps = {
   params: Promise<ProductPageParams>;
 };
 
-export function generateStaticParams() {
-  return featuredProducts.map((product) => ({
+// Prix, stocks et fiches Shopify rafraîchis toutes les 60 secondes
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const products = await getFeaturedProducts();
+  return products.map((product) => ({
     productId: product.id,
   }));
 }
@@ -30,7 +37,7 @@ export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
   const { productId } = await params;
-  const product = getFeaturedProductById(productId);
+  const product = await getFeaturedProductById(productId);
   if (!product) {
     return {
       title: "Pièce introuvable – Millie's Magic World",
@@ -73,7 +80,7 @@ export default async function ProductDetailPage({
   params,
 }: ProductPageProps) {
   const { productId } = await params;
-  const product = getFeaturedProductById(productId);
+  const product = await getFeaturedProductById(productId);
   if (!product) {
     notFound();
   }
@@ -154,6 +161,7 @@ export default async function ProductDetailPage({
               </div>
             </div>
           </div>
+          <ProductPurchaseProvider product={product}>
           <div className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#090113]/95">
             <div className="grid gap-6 border-b border-white/10 px-6 py-6 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] sm:px-8">
               <div className="space-y-3">
@@ -223,24 +231,14 @@ export default async function ProductDetailPage({
                 <p className="text-[0.6rem] uppercase tracking-[0.4em] text-white/60">
                   Tailles
                 </p>
-                <SizeSelector
-                  sizes={product.sizes}
-                  columns={Math.min(product.sizes.length, 6)}
-                  className="mt-4"
-                  buttonShape="square"
-                  tone="dark"
-                />
+                <PurchaseSizes className="mt-4" />
                 <p className="mt-3 text-[0.55rem] uppercase tracking-[0.4em] text-white/55">
                   Ajustements possibles sur rendez-vous.
                 </p>
               </section>
             </div>
             <div className="flex flex-wrap gap-4 border-t border-white/10 px-6 py-6 text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-white sm:px-8">
-              <CTAButton
-                label="Payer la pièce"
-                price={product.price}
-                className="flex-1 justify-center"
-              />
+              <PurchaseButton className="flex-1 justify-center" />
               <button
                 type="button"
                 className="border border-white px-4 py-3 transition hover:bg-white hover:text-[#090113]"
@@ -249,6 +247,7 @@ export default async function ProductDetailPage({
               </button>
             </div>
           </div>
+          </ProductPurchaseProvider>
         </div>
       </main>
     </div>

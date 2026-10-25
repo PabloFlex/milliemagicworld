@@ -1,3 +1,10 @@
+export type ProductVariant = {
+  id: string;
+  size: string;
+  available: boolean;
+  price: string;
+};
+
 export type FeaturedProduct = {
   id: string;
   title: string;
@@ -19,4 +26,6 @@ export type FeaturedProduct = {
     via?: string;
     to: string;
   };
+  // Présent uniquement quand le produit vient de Shopify (achat possible)
+  variants?: ProductVariant[];
 };

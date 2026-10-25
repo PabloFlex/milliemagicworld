@@ -11,6 +11,8 @@ type SizeSelectorProps = {
   onSelect?: (size: string) => void;
   buttonShape?: "rounded" | "square";
   tone?: "light" | "dark";
+  // Tailles épuisées : affichées barrées
+  unavailable?: Set<string>;
 };
 
 export default function SizeSelector({
@@ -22,6 +24,7 @@ export default function SizeSelector({
   onSelect,
   buttonShape = "rounded",
   tone = "light",
+  unavailable,
 }: SizeSelectorProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const computedColumns =
@@ -48,6 +51,7 @@ export default function SizeSelector({
     >
       {sizes.map((size, index) => {
         const isSelected = selectedSize === size;
+        const isUnavailable = unavailable?.has(size) ?? false;
         const key = `${size}-${index}`;
         return (
           <button
@@ -63,7 +67,7 @@ export default function SizeSelector({
             }}
             className={`w-full ${shapeClass} border px-3 py-2 text-center transition ${
               isSelected ? selectedClass : unselectedClass
-            } ${buttonClassName}`}
+            } ${isUnavailable ? "line-through opacity-40" : ""} ${buttonClassName}`}
             aria-pressed={isSelected}
           >
             {size}

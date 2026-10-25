@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Photos produits hébergées par Shopify
+    remotePatterns: [{ protocol: "https", hostname: "cdn.shopify.com" }],
+  },
 };
 
 export default nextConfig;
