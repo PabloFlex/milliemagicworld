@@ -1,6 +1,11 @@
 import ProductCards from "@/components/sections/ProductCards";
+import type { FeaturedProduct } from "@/content/productTypes";
 
-export default function ProductShowcaseSection() {
+export default function ProductShowcaseSection({
+  products,
+}: {
+  products: FeaturedProduct[];
+}) {
   return (
     <section
       id="selection-atelier"
@@ -27,7 +32,7 @@ export default function ProductShowcaseSection() {
             </p>
           </div>
         </div>
-        <ProductCards />
+        <ProductCards products={products} />
       </div>
     </section>
   );

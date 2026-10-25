@@ -4,10 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 
-import {
-  featuredProducts,
-  type FeaturedProduct,
-} from "@/content/products";
+import type { FeaturedProduct } from "@/content/productTypes";
 import SizeSelector from "@/components/interactive/SizeSelector";
 
 function MetaTag({ children }: { children: ReactNode }) {
@@ -122,10 +119,14 @@ function ProductCard({
   );
 }
 
-export default function ProductCards() {
+export default function ProductCards({
+  products,
+}: {
+  products: FeaturedProduct[];
+}) {
   return (
     <div className="grid w-full gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-      {featuredProducts.map((product) => (
+      {products.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
     </div>

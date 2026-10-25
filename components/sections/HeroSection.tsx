@@ -1,10 +1,12 @@
 import Link from "next/link";
 
-import { featuredProducts } from "@/content/products";
+import type { FeaturedProduct } from "@/content/productTypes";
 
-const spotlightProduct = featuredProducts[0];
-
-export default function HeroSection() {
+export default function HeroSection({
+  spotlightProduct,
+}: {
+  spotlightProduct?: FeaturedProduct;
+}) {
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-black text-white">
       <video

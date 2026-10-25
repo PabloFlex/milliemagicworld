@@ -2,9 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { navigationSections, type NavSection } from "@/content/navigation";
-import { featuredProducts } from "@/content/products";
-
-const spotlightProduct = featuredProducts[0];
+import CartButton from "@/components/cart/CartButton";
+import type { FeaturedProduct } from "@/content/productTypes";
 
 function LogoMark() {
   return (
@@ -46,7 +45,11 @@ function NavSection({ title, items }: NavSection) {
   );
 }
 
-export default function NavBar() {
+export default function NavBar({
+  spotlightProduct,
+}: {
+  spotlightProduct?: FeaturedProduct;
+}) {
   return (
     <header className="absolute inset-x-0 top-0 z-40 border-b border-white/15 bg-gradient-to-b from-black/60 via-black/20 to-transparent px-6 py-4 text-white backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 text-[0.7rem] uppercase tracking-[0.35em] text-white/80 lg:flex-row lg:items-center lg:justify-between">
@@ -73,13 +76,7 @@ export default function NavBar() {
             >
               <span className="text-base">👤</span>
             </button>
-            <button
-              type="button"
-              className="rounded-full border border-white/40 px-3 py-2 transition hover:border-white hover:bg-white/10"
-              aria-label="Panier"
-            >
-              <span className="text-base">🛒</span>
-            </button>
+            <CartButton />
           </div>
         </div>
         <div className="hidden flex-1 items-center justify-between gap-6 lg:flex">
@@ -104,13 +101,7 @@ export default function NavBar() {
             >
               <span className="text-base">👤</span>
             </button>
-            <button
-              type="button"
-              className="rounded-full border border-white/40 px-3 py-2 transition hover:border-white hover:bg-white/10"
-              aria-label="Panier"
-            >
-              <span className="text-base">🛒</span>
-            </button>
+            <CartButton />
           </div>
         </div>
       </div>
